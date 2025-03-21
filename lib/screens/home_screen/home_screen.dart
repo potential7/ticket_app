@@ -114,9 +114,17 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: hotelList
-                          .map((singleHotel) => HotelRoom(
-                                hotel: singleHotel,
-                              ))
+                          .map((singleHotel) => GestureDetector(
+                        onTap: (){
+                          var index = hotelList.indexOf(singleHotel);
+                          Navigator.of(context).pushNamed(AppRoutes.hotelDetails, arguments: {
+                            "index": index
+                          });
+                        },
+                            child: HotelRoom(
+                                  hotel: singleHotel,
+                                ),
+                          ))
                           .toList(),
                     )),
 
